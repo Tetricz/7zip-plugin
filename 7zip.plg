@@ -1,0 +1,58 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+  <!ENTITY name                 "7zip">
+  <!ENTITY author               "Tetricz">
+  <!ENTITY version              "20220830">
+  <!ENTITY packageURL           "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/archive/7zz-x64-&version;.txz">
+  <!ENTITY md5sum               "7b9b18ddbaaaa469f02fdf97af24a235">
+  <!ENTITY pluginURL            "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/7zip.plg">
+  <!ENTITY emhttp               "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN  
+    name="&name;" 
+    author="&author;" 
+    version="&version;" 
+    pluginURL="&pluginURL;" 
+>
+
+<CHANGES>
+
+###2022.08.30
+- Initial version, installs 7zip 22.01 for linux
+
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+rm -f $(ls "/boot/config/plugins/7zip/7zz-x64*.txz" 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<FILE Name="/boot/config/plugins/7zip/7zz-x64-&version;.txz" Run="upgradepkg --install-new">
+<URL>&packageURL;</URL>
+<MD5>&md5sum;</MD5>
+</FILE>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+
+**7-Zip**
+
+7-Zip is a file archiver with a high compression ratio.
+
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+echo "Removing 7zip plugin"
+removepkg 7zz-x64-&version;.txz
+rm -rf /boot/config/plugins/7zip
+echo "Removing 7zip plugin done"
+
+</INLINE>
+</FILE>
+</PLUGIN>
