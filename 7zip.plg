@@ -5,7 +5,7 @@
   <!ENTITY author               "Tetricz">
   <!ENTITY version              "20220830">
   <!ENTITY packageURL           "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/archive/7zz-x64-&version;.txz">
-  <!ENTITY md5sum               "07b3803d6a671e01288e7668884ed9d7">
+  <!ENTITY md5sum               "c7f7267c76c89a2d8b7f6ed45a2bcdae">
   <!ENTITY pluginURL            "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/7zip.plg">
   <!ENTITY emhttp               "/usr/local/emhttp/plugins/&name;">
 ]>
