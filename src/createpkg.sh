@@ -11,8 +11,8 @@ ln -s 7zz 7zip
 cd "$DATA_DIR/7z"
 
 echo "Creating package..."
-makepkg -l y -c y ../7zz-x64-$(date +%Y%m%d).txz
-echo $(md5sum ../7zz-x64-$(date +%Y%m%d).txz | awk '{print $1}') 7zz-x64-$(date +%Y%m%d).txz > ../7zz-x64-$(date +%Y%m%d).txz.md5
+makepkg -l y -c y ../7zz-x64-$(date +%Y.%m.%d).txz
+echo $(md5sum ../7zz-x64-$(date +%Y.%m.%d).txz | awk '{print $1}') 7zz-x64-$(date +%Y%m%d).txz > ../7zz-x64-$(date +%Y.%m.%d).txz.md5
 
 echo "removing temporary files..."
 cd "$DATA_DIR"

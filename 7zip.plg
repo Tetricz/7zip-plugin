@@ -3,9 +3,9 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name                 "7zip">
   <!ENTITY author               "Tetricz">
-  <!ENTITY version              "20220830">
+  <!ENTITY version              "2022.08.30">
   <!ENTITY packageURL           "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/archive/7zz-x64-&version;.txz">
-  <!ENTITY md5sum               "07b3803d6a671e01288e7668884ed9d7">
+  <!ENTITY md5sum               "5e73bb7dc058e1cbae8204948df0b079">
   <!ENTITY pluginURL            "https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/7zip.plg">
   <!ENTITY emhttp               "/usr/local/emhttp/plugins/&name;">
 ]>
@@ -23,18 +23,26 @@
 - Initial version, installs 7zip 22.01 for linux
 
 </CHANGES>
-
+<!-- 
+  Remove previous versions of 7zip
+-->
 <FILE Run="/bin/bash">
 <INLINE>
 rm -f $(ls "/boot/config/plugins/7zip/7zz-x64*.txz" 2>/dev/null|grep -v '&version;')
 </INLINE>
 </FILE>
 
+<!-- 
+  Download and install 7zip
+-->
+
 <FILE Name="/boot/config/plugins/7zip/7zz-x64-&version;.txz" Run="upgradepkg --install-new">
 <URL>&packageURL;</URL>
 <MD5>&md5sum;</MD5>
 </FILE>
-
+<!--
+  Description of plugin and image
+-->
 <FILE Name="&emhttp;/README.md">
 <INLINE>
 
@@ -45,6 +53,14 @@ rm -f $(ls "/boot/config/plugins/7zip/7zz-x64*.txz" 2>/dev/null|grep -v '&versio
 </INLINE>
 </FILE>
 
+<FILE Name="&emhttp;/images/7zip.png">
+<URL>https://raw.githubusercontent.com/Tetricz/7zip-plugin/master/icon/7ziplogo.png</URL>
+</FILE>
+
+
+<!-- 
+  Remove plugin
+-->
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
 
