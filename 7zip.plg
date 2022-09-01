@@ -14,7 +14,8 @@
     name="&name;" 
     author="&author;" 
     version="&version;" 
-    pluginURL="&pluginURL;" 
+    pluginURL="&pluginURL;"
+    support="https://github.com/Tetricz/7zip-plugin/issues"
 >
 
 <CHANGES>
